@@ -1,0 +1,2683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="NSF Client Fact-Find — National Service Financial. ADF Members, Veterans & Families.">
+<meta property="og:title" content="NSF Client Fact-Find | National Service Financial" />
+<meta property="og:description" content="Confidential financial fact-find for ADF members, veterans and families." />
+<meta property="og:type" content="website" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<title>NSF Client Fact-Find | National Service Financial</title>
+
+
+<style>
+  :root {
+    --navy: #04101c;
+    --navy-mid: #0d1e30;
+    --navy-light: #162840;
+    --navy-border: #1e3348;
+    --gold: #c2a466;
+    --gold-light: #d9bc82;
+    --gold-pale: #f0e0b8;
+    --white: #f2efe8;
+    --grey-light: #dddad2;
+    --grey-mid: #74808a;
+    --green: #1a6b3c;
+    --green-light: #27ae60;
+    --red: #c0392b;
+    --text: #04101c;
+  }
+
+
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 40px,
+      rgba(194,164,102,0.03) 40px, rgba(194,164,102,0.03) 41px
+    );
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 200px 12px 1fr 1px 1fr;
+    align-items: stretch;
+    border-bottom: 3px solid var(--gold);
+    background: var(--navy-mid);
+  }
+  .hero-logo {
+    padding: 28px 24px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px;
+    background: var(--navy-mid);
+  }
+  .hero-logo img {
+    height: 86px; width: auto;
+    background: transparent;
+    padding: 0; border-radius: 3px;
+  }
+  .hero-logo-tagline {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); opacity: 0.85; text-align: center;
+  }
+  .hero-accent {
+    background: var(--gold);
+    width: 12px; align-self: stretch;
+    min-height: 140px;
+  }
+  .hero-divider {
+    background: rgba(194,164,102,0.25);
+    width: 1px; align-self: stretch; margin: 20px 0;
+  }
+  .hero-content {
+    padding: 28px 40px;
+    display: flex; flex-direction: column; justify-content: center;
+    background: var(--navy-mid);
+  }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px,3.8vw,54px);
+    letter-spacing: 2px; line-height: 0.95;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic; font-size: 13px;
+    color: var(--grey-mid); font-weight: 300;
+  }
+  .hero-meta {
+    padding: 28px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+    align-content: center;
+    background: var(--navy-mid);
+  }
+  .hero-meta-item {
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .hero-meta-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--grey-mid);
+  }
+  .hero-meta input[type="date"],
+  .hero-meta input[type="text"],
+  .hero-meta select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(194,164,102,0.3);
+    color: var(--white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px; padding: 7px 10px;
+    border-radius: 2px; outline: none;
+    width: 100%;
+  }
+  .hero-meta input[type="date"]:focus,
+  .hero-meta input[type="text"]:focus,
+  .hero-meta select:focus {
+    border-color: var(--gold);
+    background: rgba(194,164,102,0.1);
+  }
+  .hero-meta .valid-until-val {
+    font-size: 12px; padding: 7px 10px;
+    background: rgba(194,164,102,0.12);
+    border: 1px solid rgba(194,164,102,0.4);
+    border-radius: 2px;
+    color: var(--gold-light);
+    font-weight: 700; letter-spacing: 0.5px;
+  }
+  .hero-meta .valid-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: #5dbb8a; margin-top: 2px;
+  }
+
+
+  /* ─── TOAST / OVERLAY ─── */
+  .nsf-toast {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+    background: var(--navy-mid);
+    border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold);
+    border-radius: 3px;
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px; color: var(--white);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    z-index: 9999; min-width: 320px; max-width: 480px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .nsf-toast.show { opacity: 1; pointer-events: auto; }
+  .nsf-toast-icon { font-size: 22px; flex-shrink: 0; }
+  .nsf-toast-text { flex: 1; line-height: 1.5; }
+  .nsf-toast-text strong { color: var(--gold); display: block; margin-bottom: 2px; }
+  .nsf-toast-close {
+    cursor: pointer; color: var(--grey-mid);
+    font-size: 18px; line-height: 1; padding: 0 4px;
+    background: none; border: none; color: var(--grey-mid);
+    transition: color 0.2s;
+  }
+  .nsf-toast-close:hover { color: var(--white); }
+  .nsf-overlay {
+    position: fixed; inset: 0;
+    background: rgba(4,16,28,0.75);
+    z-index: 9998; display: flex;
+    align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .nsf-overlay.show { opacity: 1; pointer-events: auto; }
+  .nsf-spinner {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+  }
+  .nsf-spinner-ring {
+    width: 48px; height: 48px;
+    border: 3px solid rgba(194,164,102,0.2);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .nsf-spinner-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+
+  /* ─── PROGRESS ─── */
+  .progress-bar-wrap {
+    background: var(--navy-mid);
+    padding: 14px 48px;
+    border-bottom: 1px solid rgba(194,164,102,0.2);
+    display: flex; align-items: center; gap: 20px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .progress-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); white-space: nowrap; min-width: 100px;
+  }
+  .progress-track {
+    flex: 1; height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 2px; width: 0%;
+    transition: width 0.5s ease;
+  }
+  .progress-pct {
+    font-size: 13px; font-weight: 700;
+    color: var(--gold-light); min-width: 36px; text-align: right;
+  }
+  .progress-actions {
+    display: flex; gap: 10px; margin-left: 16px;
+  }
+  .btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 8px 18px; border-radius: 2px; cursor: pointer;
+    border: none; transition: all 0.2s;
+  }
+  .btn-gold {
+    background: var(--gold); color: var(--navy);
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(194,164,102,0.4);
+    color: var(--gold);
+  }
+  .btn-outline:hover {
+    background: rgba(194,164,102,0.08);
+    border-color: var(--gold);
+  }
+
+  /* ─── MAIN ─── */
+  .main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 36px 24px 80px;
+  }
+
+  /* ─── SECTION BLOCKS ─── */
+  .section-block {
+    margin-bottom: 24px; border-radius: 2px;
+    overflow: hidden;
+    animation: fadeUp 0.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-header {
+    background: var(--navy-mid);
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 14px;
+    cursor: pointer;
+    border-left: 4px solid var(--gold);
+    transition: background 0.2s; user-select: none;
+  }
+  .section-header:hover { background: var(--navy-light); }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; color: var(--gold);
+    line-height: 1; min-width: 32px;
+  }
+  .section-title-wrap { flex: 1; }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 19px; letter-spacing: 1px;
+    color: var(--white); line-height: 1;
+  }
+  .section-desc {
+    font-size: 12px; color: var(--grey-mid);
+    margin-top: 3px; font-weight: 300;
+  }
+  .status-pill {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 2px;
+    background: rgba(255,255,255,0.07); color: var(--grey-mid);
+    transition: all 0.3s;
+  }
+  .status-pill.complete { background: rgba(26,107,60,0.3); color: #5dbb8a; }
+  .chevron {
+    font-size: 16px; color: var(--gold);
+    transition: transform 0.3s;
+  }
+  .section-header.open .chevron { transform: rotate(180deg); }
+
+  .section-body {
+    background: var(--navy-mid);
+    border-left: 4px solid rgba(194,164,102,0.25);
+    display: none; padding: 0;
+  }
+  .section-body.open { display: block; }
+
+  /* ─── TWO-CLIENT GRID ─── */
+  .client-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    gap: 0;
+  }
+  .client-grid .col-header {
+    background: rgba(194,164,102,0.1);
+    padding: 12px 16px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); text-align: center;
+    border-bottom: 1px solid rgba(194,164,102,0.2);
+  }
+  .client-grid .col-header:first-child { text-align: left; }
+  .client-grid .row-label {
+    display: flex; align-items: center;
+    padding: 10px 16px;
+    font-size: 13px; color: var(--white);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.1);
+  }
+  .client-grid .row-label.highlighted {
+    background: rgba(194,164,102,0.07);
+    color: var(--gold-light); font-weight: 600;
+  }
+  .client-grid .row-cell {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-left: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* ─── FIELD INPUTS ─── */
+  input[type="text"], input[type="number"], input[type="email"],
+  input[type="tel"], input[type="date"], select, textarea {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(194,164,102,0.25);
+    border-radius: 2px;
+    color: var(--white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px; padding: 8px 10px; width: 100%;
+    transition: border-color 0.2s, background 0.2s; outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    background: rgba(194,164,102,0.08);
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+  select { cursor: pointer; -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c2a466' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px;
+  }
+  select option { background: #0d1e30; color: var(--white); }
+  textarea { resize: vertical; min-height: 80px; }
+
+  /* ─── SINGLE-COLUMN FIELDS ─── */
+  .field-group {
+    padding: 20px 24px;
+    display: flex; flex-direction: column; gap: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .field-group:last-child { border-bottom: none; }
+  .field-row-single {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 12px; align-items: start;
+  }
+  .field-row-single.wide-label {
+    grid-template-columns: 300px 1fr;
+  }
+  .field-label {
+    font-size: 13px; color: var(--white);
+    padding-top: 9px; line-height: 1.4;
+  }
+  .field-hint {
+    font-size: 11px; color: var(--grey-mid);
+    margin-top: 2px; font-style: italic;
+  }
+
+  /* ─── ASSETS / LIABILITIES TABLE ─── */
+  .data-table {
+    width: 100%; border-collapse: collapse;
+  }
+  .data-table th {
+    background: rgba(194,164,102,0.1);
+    padding: 10px 14px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); text-align: left;
+    border-bottom: 1px solid rgba(194,164,102,0.2);
+  }
+  .data-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: middle;
+  }
+  .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .row-cat {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); padding: 12px 14px 6px;
+    background: rgba(194,164,102,0.05);
+    border-top: 1px solid rgba(194,164,102,0.15);
+  }
+  .total-row td {
+    background: rgba(194,164,102,0.07);
+    font-weight: 700; color: var(--gold-light);
+    border-top: 1px solid rgba(194,164,102,0.3);
+  }
+  .dollar-prefix {
+    display: flex; align-items: center; gap: 0;
+  }
+  .dollar-prefix span {
+    background: rgba(194,164,102,0.15);
+    border: 1px solid rgba(194,164,102,0.25);
+    border-right: none; border-radius: 2px 0 0 2px;
+    padding: 8px 8px; font-size: 12px;
+    color: var(--gold); line-height: 1;
+  }
+  .dollar-prefix input {
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ─── NOTES AREA ─── */
+  .notes-section {
+    padding: 20px 24px;
+  }
+  .notes-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+
+  /* ─── CHECKBOX OWNER ─── */
+  .owner-select {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .owner-btn {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; padding: 4px 10px;
+    border-radius: 2px; cursor: pointer;
+    border: 1px solid rgba(194,164,102,0.3);
+    background: transparent; color: var(--grey-mid);
+    transition: all 0.15s; user-select: none;
+  }
+  .owner-btn.active {
+    background: rgba(194,164,102,0.2);
+    border-color: var(--gold); color: var(--gold-light);
+  }
+
+  /* ─── INFO BANNER ─── */
+  .info-banner {
+    background: rgba(194,164,102,0.07);
+    border: 1px solid rgba(194,164,102,0.2);
+    border-radius: 2px; padding: 12px 16px;
+    font-size: 12px; color: var(--grey-mid);
+    margin: 16px 24px; line-height: 1.6;
+  }
+  .info-banner strong { color: var(--gold); }
+
+
+
+  /* ─── FINANCIAL DASHBOARD ─── */
+  .fin-dashboard {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-top: 1px solid rgba(194,164,102,0.15);
+    padding: 24px 48px 28px;
+  }
+  .fin-dashboard-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .fin-dashboard-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(194,164,102,0.4), transparent);
+  }
+  .fin-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .fin-kpi {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(194,164,102,0.15);
+    border-radius: 2px;
+    padding: 14px 16px 12px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .fin-kpi.has-value {
+    border-color: rgba(194,164,102,0.35);
+  }
+  .fin-kpi::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: rgba(194,164,102,0.3);
+    transition: background 0.3s;
+  }
+  .fin-kpi.positive::before { background: #27ae60; }
+  .fin-kpi.negative::before { background: #c0392b; }
+  .fin-kpi.neutral::before  { background: var(--gold); }
+  .fin-kpi-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--grey-mid); margin-bottom: 6px;
+    white-space: nowrap;
+  }
+  .fin-kpi-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 1px;
+    color: var(--white); line-height: 1;
+    transition: color 0.3s;
+  }
+  .fin-kpi.positive .fin-kpi-value { color: #5dbb8a; }
+  .fin-kpi.negative .fin-kpi-value { color: #e07b70; }
+  .fin-kpi.neutral  .fin-kpi-value { color: var(--gold-light); }
+  .fin-kpi-sub {
+    font-size: 10px; color: var(--grey-mid);
+    margin-top: 3px;
+  }
+  .fin-flags {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .fin-flag {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px; padding: 6px 12px;
+    font-size: 11px; color: var(--grey-mid);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: all 0.3s;
+    opacity: 0.4;
+  }
+  .fin-flag.active {
+    opacity: 1;
+  }
+  .fin-flag.flag-warn  { border-color: rgba(192,57,43,0.4);  color: #e07b70; background: rgba(192,57,43,0.08); }
+  .fin-flag.flag-ok    { border-color: rgba(39,174,96,0.4);   color: #5dbb8a; background: rgba(39,174,96,0.08); }
+  .fin-flag.flag-info  { border-color: rgba(194,164,102,0.4); color: var(--gold-light); background: rgba(194,164,102,0.08); }
+  .fin-flag-icon { font-size: 13px; }
+
+
+
+
+
+  /* ─── PDF CONTENT WRAPPER ─── */
+  #pdfContent {
+    width: 100%;
+  }
+
+  /* ─── PDF TARGET ─── */
+  #pdfTarget { background: #fff; }
+
+  /* ─── PDF LIGHT MODE ─── */
+  body.pdf-mode {
+    background: #fff !important;
+    color: #000 !important;
+    --navy: #fff;
+    --navy-mid: #fff;
+    --navy-light: #f5f5f5;
+    --navy-border: #ccc;
+    --gold: #9a7820;
+    --gold-light: #7a6010;
+    --gold-pale: #f0e8cc;
+    --white: #000;
+    --grey-light: #ccc;
+    --grey-mid: #444;
+  }
+
+  /* Reset everything to white/black */
+  body.pdf-mode,
+  body.pdf-mode #pdfContent,
+  body.pdf-mode #pdfTarget { background: #fff !important; }
+
+  /* Hide all chrome */
+  body.pdf-mode .btn,
+  body.pdf-mode .progress-bar-wrap,
+  body.pdf-mode .nsf-toast,
+  body.pdf-mode .nsf-overlay,
+  body.pdf-mode .status-pill,
+  body.pdf-mode .chevron,
+  body.pdf-mode .hero::before,
+  body.pdf-mode .fin-dashboard-label::after { display: none !important; }
+
+  /* Suppress placeholder text in empty fields */
+  body.pdf-mode input::placeholder,
+  body.pdf-mode textarea::placeholder,
+  body.pdf-mode select:invalid { opacity: 0 !important; color: transparent !important; }
+
+  /* ── HERO ── */
+  body.pdf-mode .hero,
+  body.pdf-mode .hero-inner { background: #fff !important; }
+  body.pdf-mode .hero-inner { border-bottom: 3px solid #000 !important; }
+  body.pdf-mode .hero-accent { background: #000 !important; }
+  body.pdf-mode .hero-divider { background: #bbb !important; width: 1px !important; }
+  body.pdf-mode .hero-eyebrow { color: #666 !important; letter-spacing: 2px !important; }
+  body.pdf-mode .hero-title { color: #000 !important; font-size: 42px !important; line-height: 1 !important; }
+  body.pdf-mode .hero-title span { color: #9a7820 !important; }
+  body.pdf-mode .hero-subtitle { color: #555 !important; }
+  body.pdf-mode .hero-logo-tagline { color: #666 !important; }
+
+  /* Hero meta */
+  body.pdf-mode .hero-meta { background: #fff !important; }
+  body.pdf-mode .hero-meta-label { color: #666 !important; font-weight: 700 !important; letter-spacing: 1px !important; }
+  body.pdf-mode .hero-meta input,
+  body.pdf-mode .hero-meta select {
+    background: #f8f8f8 !important; color: #000 !important;
+    border: 1px solid #aaa !important; font-weight: 600 !important;
+  }
+  body.pdf-mode .valid-until-val {
+    background: #f8f8f8 !important; border: 1px solid #aaa !important;
+    color: #000 !important; font-weight: 700 !important;
+  }
+  body.pdf-mode .valid-badge { color: #1a5c2e !important; font-weight: 700 !important; }
+
+  /* ── DASHBOARD ── */
+  body.pdf-mode .fin-dashboard { background: #f5f5f5 !important; border-top: 2px solid #000 !important; }
+  body.pdf-mode .fin-dashboard-label { color: #000 !important; font-weight: 800 !important; font-size: 10px !important; letter-spacing: 2px !important; }
+  body.pdf-mode .fin-kpi-grid { gap: 8px !important; }
+  body.pdf-mode .fin-kpi {
+    background: #fff !important; border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  body.pdf-mode .fin-kpi::before { height: 3px !important; }
+  body.pdf-mode .fin-kpi.positive::before { background: #1a5c2e !important; }
+  body.pdf-mode .fin-kpi.negative::before { background: #b31c1c !important; }
+  body.pdf-mode .fin-kpi.neutral::before  { background: #9a7820 !important; }
+  body.pdf-mode .fin-kpi-label { color: #444 !important; font-weight: 700 !important; font-size: 9px !important; letter-spacing: 1px !important; }
+  body.pdf-mode .fin-kpi-value { color: #000 !important; font-size: 20px !important; }
+  body.pdf-mode .fin-kpi.positive .fin-kpi-value { color: #1a5c2e !important; }
+  body.pdf-mode .fin-kpi.negative .fin-kpi-value { color: #b31c1c !important; }
+  body.pdf-mode .fin-kpi.neutral  .fin-kpi-value { color: #7a6010 !important; }
+  body.pdf-mode .fin-kpi-sub { color: #555 !important; font-size: 10px !important; }
+  body.pdf-mode .fin-flag { opacity: 0.3 !important; background: #eee !important; border: 1px solid #ccc !important; color: #999 !important; }
+  body.pdf-mode .fin-flag.active { opacity: 1 !important; }
+  body.pdf-mode .fin-flag.active.flag-warn { background: #fff5f5 !important; border-color: #b31c1c !important; color: #b31c1c !important; font-weight: 700 !important; }
+  body.pdf-mode .fin-flag.active.flag-ok   { background: #f5fff8 !important; border-color: #1a5c2e !important; color: #1a5c2e !important; font-weight: 700 !important; }
+  body.pdf-mode .fin-flag.active.flag-info { background: #fffbec !important; border-color: #9a7820 !important; color: #7a6010 !important; font-weight: 700 !important; }
+
+  /* ── SECTION HEADERS ── */
+  body.pdf-mode .section-header { background: #111 !important; border-left: 5px solid #9a7820 !important; }
+  body.pdf-mode .section-num    { color: #9a7820 !important; }
+  body.pdf-mode .section-title  { color: #fff !important; letter-spacing: 0 !important; }
+  body.pdf-mode .section-desc   { color: #aaa !important; }
+  body.pdf-mode .section-body   { display: block !important; background: #fff !important; border-left: 5px solid #ddd !important; }
+
+  /* ── CLIENT GRID ── */
+  body.pdf-mode .client-grid .col-header {
+    background: #111 !important; color: #9a7820 !important;
+    border-bottom: 2px solid #9a7820 !important; font-weight: 700 !important; letter-spacing: 1px !important;
+  }
+  body.pdf-mode .client-grid .row-label {
+    background: #f2f2f2 !important; color: #000 !important;
+    font-weight: 500 !important; border-bottom: 1px solid #ddd !important;
+  }
+  body.pdf-mode .client-grid .row-label.highlighted {
+    background: #eaeaea !important; font-weight: 700 !important;
+  }
+  body.pdf-mode .client-grid .row-cell {
+    background: #fff !important; border-bottom: 1px solid #e8e8e8 !important;
+  }
+
+  /* ── INPUTS ── */
+  body.pdf-mode input,
+  body.pdf-mode select,
+  body.pdf-mode textarea {
+    background: #fff !important; color: #000 !important;
+    border: 1px solid #bbb !important;
+  }
+  /* Empty inputs/selects — lighter treatment */
+  body.pdf-mode input:not([value]):not([data-filled]),
+  body.pdf-mode textarea:not([data-filled]) { border-color: #ddd !important; }
+
+  /* ── TABLES ── */
+  body.pdf-mode .data-table th {
+    background: #111 !important; color: #9a7820 !important;
+    border-bottom: 2px solid #9a7820 !important;
+    letter-spacing: 1px !important;
+  }
+  body.pdf-mode .data-table td { background: #fff !important; color: #000 !important; border-bottom: 1px solid #e8e8e8 !important; }
+  body.pdf-mode .data-table tr:nth-child(even) td { background: #fafafa !important; }
+  body.pdf-mode .row-cat {
+    background: #eee !important; color: #000 !important;
+    font-weight: 800 !important; font-size: 10px !important;
+    letter-spacing: 2px !important;
+    border-top: 2px solid #999 !important;
+  }
+  body.pdf-mode .total-row td {
+    background: #111 !important; color: #9a7820 !important;
+    font-weight: 700 !important; border-top: 2px solid #9a7820 !important;
+  }
+  body.pdf-mode .dollar-prefix span {
+    background: #f0f0f0 !important; color: #000 !important;
+    border: 1px solid #bbb !important;
+  }
+
+  /* ── OWNER BUTTONS ── */
+  body.pdf-mode .owner-btn { border: 1px solid #ddd !important; color: #bbb !important; background: #fff !important; }
+  body.pdf-mode .owner-btn.active { background: #111 !important; color: #9a7820 !important; border-color: #9a7820 !important; font-weight: 700 !important; }
+
+  /* ── MISC ── */
+  body.pdf-mode .info-banner { background: #f8f8f8 !important; border: 1px solid #ccc !important; color: #333 !important; }
+  body.pdf-mode .info-banner strong { color: #000 !important; }
+  body.pdf-mode .field-label { color: #000 !important; font-weight: 600 !important; }
+  body.pdf-mode .field-hint { color: #666 !important; }
+  body.pdf-mode .notes-label { color: #000 !important; font-weight: 800 !important; letter-spacing: 2px !important; }
+  body.pdf-mode .notes-section textarea { min-height: 60px !important; }
+
+  /* ── SUBMIT STRIP — hide in PDF ── */
+  body.pdf-mode [data-pdf-hide="strip"] { display: none !important; }
+
+  /* ── FOOTER ── */
+  body.pdf-mode .footer { background: #111 !important; border-top: 3px solid #9a7820 !important; }
+  body.pdf-mode .footer * { background: #111 !important; color: #ccc !important; }
+
+
+  /* ─── PRINT / PDF ─── */
+  @media print {
+    * { background: white !important; color: black !important;
+        border-color: #ccc !important; box-shadow: none !important;
+        letter-spacing: 0 !important; text-shadow: none !important; }
+
+    .progress-bar-wrap, .progress-actions,
+    .nsf-toast, .nsf-overlay, .status-pill, .chevron,
+    [data-pdf-hide="strip"], .hero::before,
+    .fin-dashboard-label::after { display: none !important; }
+
+    .section-body { display: block !important; }
+    .section-block { page-break-inside: avoid; margin-bottom: 14pt !important; }
+
+    .hero-inner { border-bottom: 3pt solid #000 !important; }
+    .hero-accent { background: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hero-divider { background: #999 !important; }
+    .hero-title   { color: #000 !important; }
+    .hero-title span { color: #9a7820 !important; }
+    .fin-kpi.positive .fin-kpi-value { color: #1a5c2e !important; }
+    .fin-kpi.negative .fin-kpi-value { color: #b31c1c !important; }
+    .fin-kpi.neutral  .fin-kpi-value { color: #7a6010 !important; }
+    .fin-flag:not(.active) { opacity: 0.2 !important; }
+    .fin-flag.active.flag-ok   { color: #1a5c2e !important; }
+    .fin-flag.active.flag-warn { color: #b31c1c !important; }
+    .fin-flag.active.flag-info { color: #7a6010 !important; }
+
+    .section-header { background: #111 !important; border-left: 4pt solid #9a7820 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-num    { color: #9a7820 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-title  { color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-body   { border-left: 4pt solid #ddd !important; }
+
+    .client-grid .col-header { background: #111 !important; color: #9a7820 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .client-grid .row-label  { background: #f0f0f0 !important; font-weight: 600 !important; }
+    .client-grid .row-label.highlighted { background: #e6e6e6 !important; font-weight: 700 !important; }
+
+    .data-table th  { background: #111 !important; color: #9a7820 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .data-table tr:nth-child(even) td { background: #f8f8f8 !important; }
+    .row-cat  { background: #eaeaea !important; font-weight: 800 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .total-row td { background: #111 !important; color: #9a7820 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dollar-prefix span { background: #f0f0f0 !important; }
+
+    .owner-btn { opacity: 0.25 !important; }
+    .owner-btn.active { background: #111 !important; color: #9a7820 !important;
+      opacity: 1 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    .footer { background: #111 !important; border-top: 2pt solid #9a7820 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer * { background: #111 !important; color: #ccc !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    @page { size: A4 portrait; margin: 12mm 10mm 14mm 10mm; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<div id="pdfContent">
+<div class="hero" id="pdfTarget">
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <img src="data:image/png;base64,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" alt="NSF Logo" style="filter: brightness(1.15) contrast(1.05);" />
+      <div class="hero-logo-tagline">National Service Financial</div>
+    </div>
+    <div class="hero-accent"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Client Onboarding Document</div>
+      <div class="hero-title">Client <span>Fact-Find</span></div>
+      <div class="hero-subtitle">ADF Members, Veterans &amp; Families — Confidential Financial Profile</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Date Completed</div>
+        <input type="date" id="dateCompleted" onchange="updateValidUntil()" />
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Information Valid Until</div>
+        <div class="valid-until-val" id="validUntilDisplay">—</div>
+        <div class="valid-badge" id="validBadge" style="display:none;">✓ 12-month validity</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">How Did You Find Us?</div>
+        <select id="referralSource" class="trackable">
+          <option value="">— Select —</option>
+          <option>Facebook / Social Media</option>
+          <option>Google Search</option>
+          <option>NSF Website</option>
+          <option>LinkedIn</option>
+          <option>Client Referral</option>
+          <option>DVA Advocate Referral</option>
+          <option>ESO / Veterans Organisation</option>
+          <option>Financial Transition Programme (FTP)</option>
+          <option>ADF Word of Mouth</option>
+          <option>Community / Local Event</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Referred By (if applicable)</div>
+        <input type="text" id="referredBy" placeholder="Name of referrer" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FINANCIAL POSITION DASHBOARD ─── -->
+  <div class="fin-dashboard">
+    <div class="fin-dashboard-label">Live Financial Position — Updates as you complete the form</div>
+    <div class="fin-kpi-grid">
+      <div class="fin-kpi" id="kpi-income">
+        <div class="fin-kpi-label">Total Income</div>
+        <div class="fin-kpi-value" id="kpi-income-val">—</div>
+        <div class="fin-kpi-sub">per annum</div>
+      </div>
+      <div class="fin-kpi" id="kpi-expenses">
+        <div class="fin-kpi-label">Total Expenses</div>
+        <div class="fin-kpi-value" id="kpi-expenses-val">—</div>
+        <div class="fin-kpi-sub" id="kpi-expenses-freq">per month</div>
+      </div>
+      <div class="fin-kpi" id="kpi-cashflow">
+        <div class="fin-kpi-label">Monthly Surplus</div>
+        <div class="fin-kpi-value" id="kpi-cashflow-val">—</div>
+        <div class="fin-kpi-sub">income ÷12 minus expenses</div>
+      </div>
+      <div class="fin-kpi" id="kpi-assets">
+        <div class="fin-kpi-label">Total Assets</div>
+        <div class="fin-kpi-value" id="kpi-assets-val">—</div>
+        <div class="fin-kpi-sub">estimated value</div>
+      </div>
+      <div class="fin-kpi" id="kpi-liabilities">
+        <div class="fin-kpi-label">Total Liabilities</div>
+        <div class="fin-kpi-value" id="kpi-liabilities-val">—</div>
+        <div class="fin-kpi-sub">balance owing</div>
+      </div>
+      <div class="fin-kpi" id="kpi-networth">
+        <div class="fin-kpi-label">Net Worth</div>
+        <div class="fin-kpi-value" id="kpi-networth-val">—</div>
+        <div class="fin-kpi-sub">assets minus liabilities</div>
+      </div>
+    </div>
+    <div class="fin-flags">
+      <div class="fin-flag flag-warn" id="flag-deficit">
+        <span class="fin-flag-icon">⚠</span> Cash Flow Deficit
+      </div>
+      <div class="fin-flag flag-ok" id="flag-surplus">
+        <span class="fin-flag-icon">✓</span> Positive Cash Flow
+      </div>
+      <div class="fin-flag flag-warn" id="flag-highdebt">
+        <span class="fin-flag-icon">⚑</span> High Debt-to-Asset Ratio
+      </div>
+      <div class="fin-flag flag-info" id="flag-super">
+        <span class="fin-flag-icon">◈</span> Superannuation Recorded
+      </div>
+      <div class="fin-flag flag-info" id="flag-property">
+        <span class="fin-flag-icon">⌂</span> Property Owner
+      </div>
+      <div class="fin-flag flag-warn" id="flag-negworth">
+        <span class="fin-flag-icon">↓</span> Negative Net Worth
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── PROGRESS BAR ─── -->
+<div class="progress-bar-wrap">
+  <div class="progress-label">Completion</div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-pct" id="progressPct">0%</div>
+  <div class="progress-actions">
+    <button class="btn btn-outline" onclick="expandAll()">Expand All</button>
+    <button class="btn btn-gold" onclick="printForm()">&#128438; Print / Save PDF</button>
+  </div>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <!-- SECTION 1: PERSONAL DETAILS -->
+  <div class="section-block" style="animation-delay:0.05s">
+    <div class="section-header open" onclick="toggleSection(this)">
+      <div class="section-num">01</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Personal Details</div>
+        <div class="section-desc">Names, contact information and basic personal data for both clients</div>
+      </div>
+      <div class="status-pill" id="pill-1">Incomplete</div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="section-body open">
+      <div class="info-banner">
+        <strong>Privacy Notice:</strong> Information collected is used solely for the purpose of providing financial advice under your engagement with National Service Financial. All data is handled in accordance with the Privacy Act 1988.
+      </div>
+      <div class="client-grid">
+        <div class="col-header">Field</div>
+        <div class="col-header">Client 1 (Primary)</div>
+        <div class="col-header">Client 2 (Partner / Joint)</div>
+
+        <div class="row-label highlighted">Surname</div>
+        <div class="row-cell"><input type="text" placeholder="Family name" class="trackable" data-section="p1" /></div>
+        <div class="row-cell"><input type="text" placeholder="Family name" class="trackable" /></div>
+
+        <div class="row-label highlighted">First &amp; Middle Names</div>
+        <div class="row-cell"><input type="text" placeholder="Given names" class="trackable" data-section="p1" /></div>
+        <div class="row-cell"><input type="text" placeholder="Given names" class="trackable" /></div>
+
+        <div class="row-label">Preferred Name</div>
+        <div class="row-cell"><input type="text" placeholder="As you'd like to be addressed" /></div>
+        <div class="row-cell"><input type="text" placeholder="As you'd like to be addressed" /></div>
+
+        <div class="row-label">DVA / PMKeys Number</div>
+        <div class="row-cell"><input type="text" placeholder="e.g. DVA12345 or PMK-XXXXXX" /></div>
+        <div class="row-cell"><input type="text" placeholder="e.g. DVA12345 or PMK-XXXXXX" /></div>
+
+        <div class="row-label highlighted">Mobile Phone</div>
+        <div class="row-cell"><input type="tel" placeholder="04XX XXX XXX" class="trackable" /></div>
+        <div class="row-cell"><input type="tel" placeholder="04XX XXX XXX" class="trackable" /></div>
+
+        <div class="row-label highlighted">Email Address</div>
+        <div class="row-cell"><input type="email" placeholder="email@example.com" class="trackable" /></div>
+        <div class="row-cell"><input type="email" placeholder="email@example.com" class="trackable" /></div>
+
+        <div class="row-label">Home Address</div>
+        <div class="row-cell" style="grid-column: span 2; border-left: 1px solid rgba(255,255,255,0.04);">
+          <input type="text" placeholder="Street, Suburb, State, Postcode" />
+        </div>
+
+        <div class="row-label">Housing Status</div>
+        <div class="row-cell">
+          <select class="trackable">
+            <option value="">— Select —</option>
+            <option>Own — no mortgage</option>
+            <option>Own — with mortgage</option>
+            <option>Renting</option>
+            <option>With Parents / Family</option>
+            <option>Defence Housing (DHA)</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="row-cell">
+          <select>
+            <option value="">— Select —</option>
+            <option>Own — no mortgage</option>
+            <option>Own — with mortgage</option>
+            <option>Renting</option>
+            <option>With Parents / Family</option>
+            <option>Defence Housing (DHA)</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="row-label highlighted">Date of Birth</div>
+        <div class="row-cell"><input type="date" class="trackable" /></div>
+        <div class="row-cell"><input type="date" class="trackable" /></div>
+
+        <div class="row-label">Number of Dependants</div>
+        <div class="row-cell">
+          <select>
+            <option value="">— Select —</option>
+            <option>0</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5+</option>
+          </select>
+        </div>
+        <div class="row-cell"><input type="text" placeholder="Ages / DOB of dependants" /></div>
+
+        <div class="row-label highlighted">Employment Status</div>
+        <div class="row-cell">
+          <select class="trackable">
+            <option value="">— Select —</option>
+            <option>Full Time — ADF Serving</option>
+            <option>Full Time — Civilian</option>
+            <option>Part Time</option>
+            <option>Casual</option>
+            <option>Self Employed</option>
+            <option>Unemployed / Seeking Work</option>
+            <option>Retired / DVA Pension</option>
+            <option>Medically Discharged</option>
+          </select>
+        </div>
+        <div class="row-cell">
+          <select class="trackable">
+            <option value="">— Select —</option>
+            <option>Full Time — ADF Serving</option>
+            <option>Full Time — Civilian</option>
+            <option>Part Time</option>
+            <option>Casual</option>
+            <option>Self Employed</option>
+            <option>Unemployed / Seeking Work</option>
+            <option>Retired / DVA Pension</option>
+            <option>Medically Discharged</option>
+          </select>
+        </div>
+
+        <div class="row-label">Employer / Unit</div>
+        <div class="row-cell"><input type="text" placeholder="Company or ADF unit name" /></div>
+        <div class="row-cell"><input type="text" placeholder="Company or ADF unit name" /></div>
+
+        <div class="row-label">Occupation / Rank</div>
+        <div class="row-cell"><input type="text" placeholder="e.g. Corporal, Project Manager" /></div>
+        <div class="row-cell"><input type="text" placeholder="e.g. Corporal, Project Manager" /></div>
+
+        <div class="row-label">Time in Current Position</div>
+        <div class="row-cell"><input type="text" placeholder="e.g. 3 years 2 months" /></div>
+        <div class="row-cell"><input type="text" placeholder="e.g. 3 years 2 months" /></div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-row-single">
+          <div class="field-label">How do you think we can help you?</div>
+          <textarea placeholder="Briefly describe the financial challenges or goals you'd like assistance with…" class="trackable"></textarea>
+        </div>
+        <div class="field-row-single">
+          <div class="field-label">What are your financial goals and objectives?</div>
+          <textarea placeholder="e.g. Protect my family, buy a home, plan for retirement, maximise my discharge entitlements…" class="trackable"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: INCOME -->
+  <div class="section-block" style="animation-delay:0.1s">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-num">02</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Income</div>
+        <div class="section-desc">All income sources including salary, pension, Centrelink and other</div>
+      </div>
+      <div class="status-pill" id="pill-2">Incomplete</div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="section-body">
+      <div class="client-grid">
+        <div class="col-header">Income Source</div>
+        <div class="col-header">Client 1 ($ per annum)</div>
+        <div class="col-header">Client 2 ($ per annum)</div>
+
+        <div class="row-label highlighted">Gross Salary / Wages</div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" class="trackable" /></div>
+        </div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+        </div>
+
+        <div class="row-label">DVA Pension Income</div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+        </div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+        </div>
+
+        <div class="row-label">Centrelink Income</div>
+        <div class="row-cell">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div class="dollar-prefix" style="flex:1"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+            <select style="width:110px;">
+              <option>per fortnight</option>
+              <option>per week</option>
+              <option>per month</option>
+            </select>
+          </div>
+        </div>
+        <div class="row-cell">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <div class="dollar-prefix" style="flex:1"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+            <select style="width:110px;">
+              <option>per fortnight</option>
+              <option>per week</option>
+              <option>per month</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row-label">Rental Income</div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+        </div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+        </div>
+
+        <div class="row-label">Investment / Dividend Income</div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+        </div>
+        <div class="row-cell">
+          <div class="dollar-prefix"><span>$</span><input type="number" data-track="income" placeholder="0" /></div>
+        </div>
+
+        <div class="row-label">Other Income (describe)</div>
+        <div class="row-cell">
+          <input type="text" placeholder="Source and amount" />
+        </div>
+        <div class="row-cell">
+          <input type="text" placeholder="Source and amount" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: EXPENSES -->
+  <div class="section-block" style="animation-delay:0.15s">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-num">03</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Living Expenses</div>
+        <div class="section-desc">Typical household and personal expenditure — all amounts per month unless noted</div>
+      </div>
+      <div class="status-pill" id="pill-3">Incomplete</div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="section-body">
+      <div style="padding: 12px 24px 4px; display:flex; gap:12px; align-items:center;">
+        <span style="font-size:12px; color:var(--grey-mid);">Expense frequency:</span>
+        <select id="expFreq" style="width:160px;">
+          <option value="monthly">Monthly</option>
+          <option value="fortnightly">Fortnightly</option>
+          <option value="weekly">Weekly</option>
+        </select>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width:220px;">Expense Category</th>
+            <th>Client 1 ($)</th>
+            <th>Client 2 ($)</th>
+            <th>Joint ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-cat" colspan="4">Household</td></tr>
+          <tr>
+            <td>Household (food, groceries, power etc)</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input trackable" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Mortgage Repayments</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Rent</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Child Care</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Education</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr><td class="row-cat" colspan="4">Insurance</td></tr>
+          <tr>
+            <td>Personal Insurance (Life, Income Prot etc)</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>General Insurance (home, car etc)</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr><td class="row-cat" colspan="4">Personal</td></tr>
+          <tr>
+            <td>Medical &amp; Health</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Entertainment &amp; Dining</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Clothing &amp; Personal Care</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr><td class="row-cat" colspan="4">Debt Repayments</td></tr>
+          <tr>
+            <td>Personal Loans</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Credit Cards (minimum repayments)</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr>
+            <td>Other (describe): <input type="text" placeholder="Description" style="width:100%;margin-top:4px;font-size:11px;" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" class="exp-input" /></div></td>
+          </tr>
+          <tr class="total-row">
+            <td style="font-size:12px; letter-spacing:1.5px; text-transform:uppercase;">TOTAL</td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" id="totalC1" placeholder="Auto" readonly style="opacity:0.7;" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" id="totalC2" placeholder="Auto" readonly style="opacity:0.7;" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" id="totalJt" placeholder="Auto" readonly style="opacity:0.7;" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 4: ASSETS -->
+  <div class="section-block" style="animation-delay:0.2s">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-num">04</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Assets</div>
+        <div class="section-desc">All assets including property, superannuation, savings, vehicles and investments</div>
+      </div>
+      <div class="status-pill" id="pill-4">Incomplete</div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="section-body">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width:200px;">Asset</th>
+            <th>Details</th>
+            <th style="width:150px;">Current Value ($)</th>
+            <th style="width:130px;">Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-cat" colspan="4">Property</td></tr>
+          <tr>
+            <td>Owned Property 1</td>
+            <td>
+              <input type="text" placeholder="Address" style="margin-bottom:4px;" />
+              <select>
+                <option value="">— Type —</option>
+                <option>Owner Occupied</option>
+                <option>Investment Property</option>
+                <option>Vacant Land</option>
+              </select>
+            </td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" class="trackable" /></div></td>
+            <td><div class="owner-select" data-owner="prop1">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Owned Property 2</td>
+            <td>
+              <input type="text" placeholder="Address" style="margin-bottom:4px;" />
+              <select>
+                <option value="">— Type —</option>
+                <option>Owner Occupied</option>
+                <option>Investment Property</option>
+                <option>Vacant Land</option>
+              </select>
+            </td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Owned Property 3</td>
+            <td>
+              <input type="text" placeholder="Address" style="margin-bottom:4px;" />
+              <select>
+                <option value="">— Type —</option>
+                <option>Owner Occupied</option>
+                <option>Investment Property</option>
+                <option>Vacant Land</option>
+              </select>
+            </td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+
+          <tr><td class="row-cat" colspan="4">Cash &amp; Bank Accounts</td></tr>
+          <tr>
+            <td>Savings / Transaction Account</td>
+            <td><input type="text" placeholder="Bank &amp; account description" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" class="trackable" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Offset Account</td>
+            <td><input type="text" placeholder="Bank &amp; account description" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Home Contents</td>
+            <td><input type="text" placeholder="Estimated replacement value" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+
+          <tr><td class="row-cat" colspan="4">Vehicles</td></tr>
+          <tr>
+            <td>Vehicle 1</td>
+            <td><input type="text" placeholder="Make, Model, Year" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Vehicle 2</td>
+            <td><input type="text" placeholder="Make, Model, Year" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Vehicle 3</td>
+            <td><input type="text" placeholder="Make, Model, Year" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+
+          <tr><td class="row-cat" colspan="4">Superannuation</td></tr>
+          <tr>
+            <td>Superannuation Fund 1</td>
+            <td>
+              <select style="margin-bottom:4px;">
+                <option value="">— Fund Name —</option>
+                <option>ADF Super</option>
+                <option>MSBS — Military Superannuation Benefits Scheme</option>
+                <option>DFRDB — Defence Forces Retirement Benefits</option>
+                <option>Australian Retirement Trust</option>
+                <option>AustralianSuper</option>
+                <option>Hostplus</option>
+                <option>REST Super</option>
+                <option>HESTA</option>
+                <option>UniSuper</option>
+                <option>Self Managed Super Fund (SMSF)</option>
+                <option>Other</option>
+              </select>
+              <input type="text" placeholder="Member number (optional)" style="font-size:11px;" />
+            </td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" class="trackable" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Superannuation Fund 2</td>
+            <td>
+              <select style="margin-bottom:4px;">
+                <option value="">— Fund Name —</option>
+                <option>ADF Super</option>
+                <option>MSBS — Military Superannuation Benefits Scheme</option>
+                <option>DFRDB — Defence Forces Retirement Benefits</option>
+                <option>Australian Retirement Trust</option>
+                <option>AustralianSuper</option>
+                <option>Hostplus</option>
+                <option>REST Super</option>
+                <option>HESTA</option>
+                <option>UniSuper</option>
+                <option>Self Managed Super Fund (SMSF)</option>
+                <option>Other</option>
+              </select>
+              <input type="text" placeholder="Member number (optional)" style="font-size:11px;" />
+            </td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+
+          <tr><td class="row-cat" colspan="4">Investments &amp; DVA</td></tr>
+          <tr>
+            <td>Shares / Managed Funds 1</td>
+            <td><input type="text" placeholder="Broker / Platform and description" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Shares / Managed Funds 2</td>
+            <td><input type="text" placeholder="Broker / Platform and description" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>DVA Lump Sum Offer</td>
+            <td>
+              <select>
+                <option value="">— Status —</option>
+                <option>Pending Assessment</option>
+                <option>Offer Received — Not Accepted</option>
+                <option>Accepted — Awaiting Payment</option>
+                <option>Received</option>
+                <option>Not Applicable</option>
+              </select>
+            </td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Other Asset 1</td>
+            <td><input type="text" placeholder="Description" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Other Asset 2</td>
+            <td><input type="text" placeholder="Description" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="asset" placeholder="0" /></div></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 5: LIABILITIES -->
+  <div class="section-block" style="animation-delay:0.25s">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-num">05</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Liabilities</div>
+        <div class="section-desc">Home loans, personal loans, credit cards, Afterpay and other debts</div>
+      </div>
+      <div class="status-pill" id="pill-5">Incomplete</div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="section-body">
+      <div class="info-banner">
+        <strong>Home Loan Health Check:</strong> Would you like NSF to review your current home loan rate and structure?
+        <select style="margin-left:12px; width:100px; display:inline-block;">
+          <option>Yes please</option>
+          <option>No thanks</option>
+        </select>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width:130px;">Liability</th>
+            <th style="width:150px;">Lender</th>
+            <th>Monthly Repayment ($)</th>
+            <th>Balance Owing ($)</th>
+            <th style="width:140px;">Loan Details</th>
+            <th style="width:120px;">Borrower</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-cat" colspan="6">Home Loans</td></tr>
+          <tr>
+            <td>Home Loan 1</td>
+            <td><input type="text" placeholder="Lender name" class="trackable" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="liability" placeholder="0" class="trackable" /></div></td>
+            <td>
+              <select style="margin-bottom:4px;">
+                <option value="">— Repayment —</option>
+                <option>Principal &amp; Interest</option>
+                <option>Interest Only</option>
+              </select>
+              <select>
+                <option value="">— Rate Type —</option>
+                <option>Variable</option>
+                <option>Fixed</option>
+                <option>Split</option>
+              </select>
+              <input type="text" placeholder="Interest rate %" style="margin-top:4px; font-size:11px;" />
+            </td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Home Loan 2</td>
+            <td><input type="text" placeholder="Lender name" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="liability" placeholder="0" /></div></td>
+            <td>
+              <select style="margin-bottom:4px;">
+                <option value="">— Repayment —</option>
+                <option>Principal &amp; Interest</option>
+                <option>Interest Only</option>
+              </select>
+              <select>
+                <option value="">— Rate Type —</option>
+                <option>Variable</option>
+                <option>Fixed</option>
+                <option>Split</option>
+              </select>
+              <input type="text" placeholder="Interest rate %" style="margin-top:4px; font-size:11px;" />
+            </td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Home Loan 3</td>
+            <td><input type="text" placeholder="Lender name" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="liability" placeholder="0" /></div></td>
+            <td>
+              <select style="margin-bottom:4px;">
+                <option value="">— Repayment —</option>
+                <option>Principal &amp; Interest</option>
+                <option>Interest Only</option>
+              </select>
+              <select>
+                <option value="">— Rate Type —</option>
+                <option>Variable</option>
+                <option>Fixed</option>
+                <option>Split</option>
+              </select>
+              <input type="text" placeholder="Interest rate %" style="margin-top:4px; font-size:11px;" />
+            </td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+
+          <tr><td class="row-cat" colspan="6">Other Loans</td></tr>
+          <tr>
+            <td>Vehicle Loan</td>
+            <td><input type="text" placeholder="Lender name" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="liability" placeholder="0" /></div></td>
+            <td><input type="text" placeholder="Rate %" /></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Other Loan</td>
+            <td><input type="text" placeholder="Lender / Purpose" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="liability" placeholder="0" /></div></td>
+            <td><input type="text" placeholder="Rate %" /></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+
+          <tr><td class="row-cat" colspan="6">Credit Cards &amp; BNPL</td></tr>
+          <tr>
+            <td>Credit Card 1</td>
+            <td><input type="text" placeholder="Bank / Card name" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="Min repayment" /></div></td>
+            <td>
+              <div class="dollar-prefix" style="margin-bottom:4px;"><span>$</span><input type="number" data-track="liability" placeholder="Balance" /></div>
+              <div class="dollar-prefix"><span style="font-size:10px;">Lmt</span><input type="number" placeholder="Credit limit" /></div>
+            </td>
+            <td><input type="text" placeholder="Rate %" /></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Credit Card 2</td>
+            <td><input type="text" placeholder="Bank / Card name" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="Min repayment" /></div></td>
+            <td>
+              <div class="dollar-prefix" style="margin-bottom:4px;"><span>$</span><input type="number" data-track="liability" placeholder="Balance" /></div>
+              <div class="dollar-prefix"><span style="font-size:10px;">Lmt</span><input type="number" placeholder="Credit limit" /></div>
+            </td>
+            <td><input type="text" placeholder="Rate %" /></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Credit Card 3</td>
+            <td><input type="text" placeholder="Bank / Card name" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="Min repayment" /></div></td>
+            <td>
+              <div class="dollar-prefix" style="margin-bottom:4px;"><span>$</span><input type="number" data-track="liability" placeholder="Balance" /></div>
+              <div class="dollar-prefix"><span style="font-size:10px;">Lmt</span><input type="number" placeholder="Credit limit" /></div>
+            </td>
+            <td><input type="text" placeholder="Rate %" /></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Afterpay / Zip Pay</td>
+            <td><input type="text" placeholder="Provider" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="liability" placeholder="Balance owing" /></div></td>
+            <td>—</td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Other Debt</td>
+            <td><input type="text" placeholder="Description" /></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" placeholder="0" /></div></td>
+            <td><div class="dollar-prefix"><span>$</span><input type="number" data-track="liability" placeholder="0" /></div></td>
+            <td><input type="text" placeholder="Rate / Terms" /></td>
+            <td><div class="owner-select">
+              <div class="owner-btn" onclick="toggleOwner(this,'C1')">C1</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'C2')">C2</div>
+              <div class="owner-btn" onclick="toggleOwner(this,'Joint')">Joint</div>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="notes-section">
+        <div class="notes-label">Liability Notes</div>
+        <textarea placeholder="Any additional notes about debts, upcoming refinancing, or other relevant details…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: ADVISER NOTES -->
+  <div class="section-block" style="animation-delay:0.3s">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-num">06</div>
+      <div class="section-title-wrap">
+        <div class="section-title">Adviser Notes</div>
+        <div class="section-desc">Internal notes, action items and follow-up requirements for the NSF adviser</div>
+      </div>
+      <div class="status-pill" id="pill-6">Optional</div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <div class="field-row-single">
+          <div class="field-label">
+            Meeting / Call Notes
+            <div class="field-hint">Summary of initial discussion, key concerns raised</div>
+          </div>
+          <textarea placeholder="Key discussion points, concerns raised, priorities identified…" style="min-height:120px;"></textarea>
+        </div>
+        <div class="field-row-single">
+          <div class="field-label">
+            DVA / Claims Status
+            <div class="field-hint">Current claims, pending entitlements, referral requirements</div>
+          </div>
+          <textarea placeholder="DVA claim numbers, status, referrals to DVA advocate or legal services…"></textarea>
+        </div>
+        <div class="field-row-single">
+          <div class="field-label">
+            Action Items
+            <div class="field-hint">Follow-up tasks, documents required, referrals</div>
+          </div>
+          <textarea placeholder="1. Obtain superannuation statements&#10;2. Confirm DVA claim status&#10;3. Review insurance coverage…"></textarea>
+        </div>
+        <div class="field-row-single">
+          <div class="field-label">Risk Profile</div>
+          <select>
+            <option value="">— To be determined —</option>
+            <option>Conservative</option>
+            <option>Moderately Conservative</option>
+            <option>Balanced</option>
+            <option>Moderately Aggressive</option>
+            <option>Aggressive / Growth</option>
+          </select>
+        </div>
+        <div class="field-row-single">
+          <div class="field-label">Referral Source</div>
+          <select>
+            <option value="">— Select —</option>
+            <option>ADF Word of Mouth</option>
+            <option>DVA Advocate Referral</option>
+            <option>ESO / Veteran Organisation</option>
+            <option>Financial Transition Programme (FTP)</option>
+            <option>Google / Web Search</option>
+            <option>LinkedIn</option>
+            <option>Facebook / Social Media</option>
+            <option>Existing Client Referral</option>
+            <option>Partner / Community Event</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT / RETURN STRIP -->
+  <div data-pdf-hide="strip" style="background: var(--navy-mid); border: 1px solid rgba(194,164,102,0.25); border-radius: 2px; padding: 24px 28px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:1px; color:var(--white); margin-bottom:6px;">Ready to Submit this Form?</div>
+      <div style="font-size:12px; color:var(--grey-mid); line-height:1.8;">
+        Click <strong style="color:var(--gold-light);">Save as PDF</strong> to download your completed fact-find, then email to <strong style="color:var(--gold);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dbb2b5bdb49bb5baafb2b4b5bab7a8bea9adb2b8bebdb2b5bab5b8b2bab7f5b8b4b6f5baae">[email&#160;protected]</a></strong>
+      </div>
+      <div style="font-size:12px; color:var(--grey-mid); line-height:1.7;">
+        1. Click <strong style="color:var(--gold-light);">Save as PDF</strong> to download your completed fact-find.<br>
+        2. Email the PDF to <strong style="color:var(--gold);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acc5c2cac3ecc2cdd8c5c3c2cdc0dfc9dedac5cfc9cac5c2cdc2cfc5cdc082cfc3c182cdd9">[email&#160;protected]</a></strong>
+      </div>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn btn-outline" onclick="clearForm()">&#10005; Clear Form</button>
+      <button class="btn btn-gold" onclick="printForm()" style="gap:8px;">&#128438; Save as PDF</button>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ─── FOOTER ─── -->
+<div class="footer" style="background:#05101f; border-top:3px solid var(--gold); padding:28px 48px; margin-top:0;">
+  <div style="max-width:1000px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:2px; color:var(--gold);">National Service Financial</div>
+        <div style="font-size:11px; color:var(--grey-mid); letter-spacing:1.5px; text-transform:uppercase; margin-top:2px;">Veteran-Owned · ADF Financial Specialists</div>
+      </div>
+    </div>
+    <div style="text-align:right; font-size:11px; color:var(--grey-mid); line-height:1.7; max-width:400px;">
+      ABN 58 622 673 330 · Corp Authorised Representative 1281192<br>
+      Suite 302, 1 Bryant Drive, Mariners Centre of Excellence, Tuggerah NSW 2259<br>
+      Shartru Wealth Management ABN 46 158 536 871 · AFSL 422409<br>
+      <span style="font-size:10px; opacity:0.6;">This document is for information collection purposes only and does not constitute financial advice.</span>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  'use strict';
+
+  // ─── HELPERS ───
+  function fmt(n) {
+    if (isNaN(n) || n === 0) return '—';
+    var abs = Math.abs(n);
+    var s = abs >= 1000000
+      ? '$' + (abs/1000000).toFixed(2) + 'M'
+      : abs >= 1000
+      ? '$' + Math.round(abs/1000) + 'k'
+      : '$' + Math.round(abs).toLocaleString();
+    return n < 0 ? '-' + s : s;
+  }
+
+  function setKpi(id, value, state, sub) {
+    var card  = document.getElementById('kpi-' + id);
+    var val   = document.getElementById('kpi-' + id + '-val');
+    if (!card || !val) return;
+    val.textContent = value;
+    card.classList.remove('positive','negative','neutral','has-value');
+    if (value !== '—') {
+      card.classList.add('has-value');
+      if (state) card.classList.add(state);
+    }
+    if (sub) {
+      var subEl = card.querySelector('.fin-kpi-sub');
+      if (subEl) subEl.textContent = sub;
+    }
+  }
+
+  function setFlag(id, active, type) {
+    var el = document.getElementById('flag-' + id);
+    if (!el) return;
+    el.classList.remove('active','flag-warn','flag-ok','flag-info');
+    if (active) {
+      el.classList.add('active');
+      if (type) el.classList.add('flag-' + type);
+    }
+  }
+
+  // ─── DASHBOARD UPDATE ───
+  function updateDashboard() {
+    // INCOME — sum all data-track=income inputs (all are $pa or $pf)
+    var incomeTotal = 0;
+    document.querySelectorAll('[data-track="income"]').forEach(function(el) {
+      incomeTotal += parseFloat(el.value) || 0;
+    });
+    // Handle Centrelink fortnightly inputs — they have an adjacent select
+    // Adjust: if any income input has a sibling 'per fortnight' select, multiply by 26
+    // (simple heuristic: Centrelink inputs are in a flex div alongside a frequency select)
+    document.querySelectorAll('[data-track="income"]').forEach(function(el) {
+      var parentDiv = el.closest('div');
+      if (parentDiv) {
+        var wrapper = parentDiv.closest('div');
+        if (wrapper) {
+          var sel = wrapper.querySelector('select');
+          if (sel) {
+            var freq = sel.value;
+            var v = parseFloat(el.value) || 0;
+            if (v > 0) {
+              // Remove single value, re-add annualised
+              incomeTotal -= v;
+              if (freq === 'per fortnight') incomeTotal += v * 26;
+              else if (freq === 'per week') incomeTotal += v * 52;
+              else if (freq === 'per month') incomeTotal += v * 12;
+              else incomeTotal += v * 26; // default fortnightly
+            }
+          }
+        }
+      }
+    });
+
+    // EXPENSES — read from the calculated totals (sum c1+c2+joint rows)
+    var expC1 = parseFloat(document.getElementById('totalC1') && document.getElementById('totalC1').value) || 0;
+    var expC2 = parseFloat(document.getElementById('totalC2') && document.getElementById('totalC2').value) || 0;
+    var expJt = parseFloat(document.getElementById('totalJt') && document.getElementById('totalJt').value) || 0;
+    // Avoid double-counting — joint is shared, C1+C2 are personal
+    var expTotal = expC1 + expC2 + expJt;
+    
+    // Adjust for frequency
+    var freqSel = document.getElementById('expFreq');
+    var freqMult = 1;
+    if (freqSel) {
+      if (freqSel.value === 'fortnightly') freqMult = 26/12;
+      else if (freqSel.value === 'weekly') freqMult = 52/12;
+    }
+    var expMonthly = expTotal * freqMult;
+
+    // CASH FLOW (monthly)
+    var incomeMonthly = incomeTotal / 12;
+    var cashFlow = incomeMonthly - expMonthly;
+
+    // ASSETS
+    var assetTotal = 0;
+    document.querySelectorAll('[data-track="asset"]').forEach(function(el) {
+      assetTotal += parseFloat(el.value) || 0;
+    });
+
+    // LIABILITIES
+    var liabTotal = 0;
+    document.querySelectorAll('[data-track="liability"]').forEach(function(el) {
+      liabTotal += parseFloat(el.value) || 0;
+    });
+
+    // NET WORTH
+    var netWorth = assetTotal - liabTotal;
+
+    // Debt-to-asset ratio
+    var dtar = assetTotal > 0 ? liabTotal / assetTotal : 0;
+
+    // Has super — check if any asset-tracked input in a super row is > 0
+    var hasSuperVal = false;
+    document.querySelectorAll('[data-track="asset"]').forEach(function(el) {
+      var row = el.closest('tr');
+      if (row && row.previousElementSibling) {
+        // check if the .row-cat above is 'Superannuation'
+      }
+      if (parseFloat(el.value) > 0) hasSuperVal = true; // simplified
+    });
+
+    // Has property — check if any property owner button is active
+    var hasProperty = false;
+    var propRows = document.querySelectorAll('.data-table tbody tr');
+    propRows.forEach(function(row) {
+      var firstTd = row.querySelector('td:first-child');
+      if (firstTd && firstTd.textContent.includes('Property')) {
+        var valInput = row.querySelector('[data-track="asset"]');
+        if (valInput && parseFloat(valInput.value) > 0) hasProperty = true;
+      }
+    });
+
+    // ─── SET KPIs ───
+    setKpi('income',
+      incomeTotal > 0 ? fmt(incomeTotal) : '—',
+      incomeTotal > 0 ? 'neutral' : null,
+      'per annum (approx)'
+    );
+    setKpi('expenses',
+      expMonthly > 0 ? fmt(expMonthly) : '—',
+      expMonthly > 0 ? 'neutral' : null,
+      'per month'
+    );
+    if (incomeTotal > 0 && expMonthly > 0) {
+      setKpi('cashflow',
+        fmt(cashFlow),
+        cashFlow >= 0 ? 'positive' : 'negative',
+        cashFlow >= 0 ? 'monthly surplus' : 'monthly deficit'
+      );
+    } else {
+      setKpi('cashflow', '—', null);
+    }
+    setKpi('assets',
+      assetTotal > 0 ? fmt(assetTotal) : '—',
+      assetTotal > 0 ? 'neutral' : null
+    );
+    setKpi('liabilities',
+      liabTotal > 0 ? fmt(liabTotal) : '—',
+      liabTotal > 0 ? 'neutral' : null
+    );
+    if (assetTotal > 0 || liabTotal > 0) {
+      setKpi('networth',
+        fmt(netWorth),
+        netWorth >= 0 ? 'positive' : 'negative'
+      );
+    } else {
+      setKpi('networth', '—', null);
+    }
+
+    // ─── FLAGS ───
+    var showDeficit  = incomeTotal > 0 && expMonthly > 0 && cashFlow < 0;
+    var showSurplus  = incomeTotal > 0 && expMonthly > 0 && cashFlow >= 0;
+    var showHighDebt = assetTotal > 0 && dtar > 0.6;
+    var showNegWorth = (assetTotal > 0 || liabTotal > 0) && netWorth < 0;
+    
+    // Super: check if any super fund input has value
+    var superTotal = 0;
+    var superRows = document.querySelectorAll('.data-table tbody tr');
+    var inSuperSection = false;
+    superRows.forEach(function(row) {
+      if (row.querySelector('.row-cat') && row.querySelector('.row-cat').textContent.includes('Superannuation')) {
+        inSuperSection = true;
+      } else if (row.querySelector('.row-cat')) {
+        inSuperSection = false;
+      }
+      if (inSuperSection) {
+        var inp = row.querySelector('[data-track="asset"]');
+        if (inp) superTotal += parseFloat(inp.value) || 0;
+      }
+    });
+    var showSuper    = superTotal > 0;
+    var showProperty = hasProperty;
+
+    setFlag('deficit',  showDeficit,  'warn');
+    setFlag('surplus',  showSurplus,  'ok');
+    setFlag('highdebt', showHighDebt, 'warn');
+    setFlag('negworth', showNegWorth, 'warn');
+    setFlag('super',    showSuper,    'info');
+    setFlag('property', showProperty, 'info');
+  }
+
+  // ─── TOGGLE SECTION ───
+  window.toggleSection = function(header) {
+    var body = header.nextElementSibling;
+    var isOpen = header.classList.contains('open');
+    header.classList.toggle('open', !isOpen);
+    body.classList.toggle('open', !isOpen);
+    updateProgress();
+  };
+
+  window.expandAll = function() {
+    document.querySelectorAll('.section-header').forEach(function(h) {
+      h.classList.add('open');
+      if (h.nextElementSibling) h.nextElementSibling.classList.add('open');
+    });
+  };
+
+  window.toggleOwner = function(btn, val) {
+    var wrap = btn.closest('.owner-select');
+    if (!wrap) return;
+    wrap.querySelectorAll('.owner-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+  };
+
+  // ─── EXPENSE TOTALS ───
+  function calcExpTotals() {
+    var inputs = document.querySelectorAll('.exp-input');
+    var c1 = 0, c2 = 0, jt = 0;
+    inputs.forEach(function(inp, i) {
+      var v = parseFloat(inp.value) || 0;
+      var col = i % 3;
+      if (col === 0) c1 += v;
+      else if (col === 1) c2 += v;
+      else jt += v;
+    });
+    var t1 = document.getElementById('totalC1');
+    var t2 = document.getElementById('totalC2');
+    var tJ = document.getElementById('totalJt');
+    if (t1) t1.value = c1 > 0 ? c1 : '';
+    if (t2) t2.value = c2 > 0 ? c2 : '';
+    if (tJ) tJ.value = jt > 0 ? jt : '';
+    updateDashboard();
+  }
+
+  // ─── PROGRESS ───
+  function updateProgress() {
+    var trackable = document.querySelectorAll('.trackable');
+    if (!trackable.length) return;
+    var filled = 0;
+    trackable.forEach(function(el) {
+      var v = (el.value || '').trim();
+      if (v && v !== '0') filled++;
+    });
+    var pct = Math.round((filled / trackable.length) * 100);
+    var fill = document.getElementById('progressFill');
+    var pctEl = document.getElementById('progressPct');
+    if (fill) fill.style.width = pct + '%';
+    if (pctEl) pctEl.textContent = pct + '%';
+  }
+  window.updateProgress = updateProgress;
+
+  // ─── PDF GENERATION ───
+  function getClientName() {
+    var cells = document.querySelectorAll('.client-grid .row-cell input');
+    var first = cells[1] ? cells[1].value : '';
+    var last  = cells[0] ? cells[0].value : '';
+    return [first, last].filter(Boolean).join('_').replace(/\s+/g,'_') || 'NSF_FactFind';
+  }
+
+  function showOverlay() {
+    var o = document.getElementById('nsfOverlay');
+    if (o) o.classList.add('show');
+  }
+  function hideOverlay() {
+    var o = document.getElementById('nsfOverlay');
+    if (o) o.classList.remove('show');
+  }
+  function showToast(title, msg) {
+    var t = document.getElementById('nsfToast');
+    var tTitle = document.getElementById('nsfToastTitle');
+    var tMsg   = document.getElementById('nsfToastMsg');
+    if (!t) return;
+    if (tTitle) tTitle.textContent = title;
+    if (tMsg)   tMsg.textContent   = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 7000);
+  }
+  window.hideToast = function() {
+    var t = document.getElementById('nsfToast');
+    if (t) t.classList.remove('show');
+  };
+
+  function generatePDF(callback) {
+    // Expand all sections so everything is visible in print
+    window.expandAll();
+
+    // Brief pause to let DOM settle, then trigger native browser print
+    showOverlay();
+    setTimeout(function() {
+      hideOverlay();
+      window.print();
+      if (callback) callback('NSF_FactFind.pdf');
+    }, 400);
+  }
+
+  window.printForm = function() {
+    generatePDF(function(fname) {
+      showToast('Printing', 'Use your browser print dialog to Save as PDF.');
+    });
+  };
+
+  window.clearForm = function() {
+    if (!confirm('Clear all form data? This cannot be undone.')) return;
+    document.querySelectorAll('input, select, textarea').forEach(function(el) {
+      if (el.id === 'dateCompleted') return;
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        el.checked = false;
+      } else {
+        el.value = '';
+      }
+    });
+    document.querySelectorAll('.owner-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    updateProgress();
+    calcExpTotals();
+    updateDashboard();
+  };
+
+  // ─── VALID UNTIL ───
+  window.updateValidUntil = function() {
+    var dateFld = document.getElementById('dateCompleted');
+    var display = document.getElementById('validUntilDisplay');
+    var badge   = document.getElementById('validBadge');
+    if (!dateFld || !display) return;
+    var v = dateFld.value;
+    if (!v) { display.textContent = '—'; if (badge) badge.style.display = 'none'; return; }
+    var d = new Date(v);
+    d.setFullYear(d.getFullYear() + 1); // 12 months — ASIC/AFS best practice
+    var opts = { day: '2-digit', month: 'short', year: 'numeric' };
+    display.textContent = d.toLocaleDateString('en-AU', opts);
+    if (badge) badge.style.display = 'inline-flex';
+  };
+
+  // ─── EMAIL NSF ───
+  window.emailNSF = function() {
+    var date    = document.getElementById('dateCompleted')    ? document.getElementById('dateCompleted').value    : '';
+    var validUntil = document.getElementById('validUntilDisplay') ? document.getElementById('validUntilDisplay').textContent : '';
+    var source  = document.getElementById('referralSource')   ? document.getElementById('referralSource').value   : '';
+    var refBy   = document.getElementById('referredBy')       ? document.getElementById('referredBy').value       : '';
+
+    // Gather Section 1 personal details
+    var inputs  = document.querySelectorAll('.section-block:nth-child(1) input[type="text"], .section-block:nth-child(1) input[type="email"], .section-block:nth-child(1) input[type="tel"]');
+    var surname = '', firstName = '', preferred = '', mobile = '', email = '';
+    document.querySelectorAll('.client-grid .row-cell input').forEach(function(el, i) {
+      if (i === 0) surname    = el.value;
+      if (i === 1) firstName  = el.value;
+      if (i === 3) mobile     = el.value;
+      if (i === 5) email      = el.value;
+    });
+
+    var clientName = [firstName, surname].filter(Boolean).join(' ') || 'Client';
+
+    var subject = 'NSF Fact-Find — ' + clientName + (date ? ' — ' + date : '');
+
+    var body = [];
+    body.push('Dear NSF Team,');
+    body.push('');
+    body.push('Please find below the completed Client Fact-Find details submitted via the NSF online form.');
+    body.push('');
+    body.push('─────────────────────────────');
+    body.push('FORM DETAILS');
+    body.push('─────────────────────────────');
+    body.push('Date Completed:      ' + (date || '—'));
+    body.push('Information Valid Until: ' + (validUntil || '—'));
+    body.push('How Found Us:        ' + (source || '—'));
+    body.push('Referred By:         ' + (refBy || '—'));
+    body.push('');
+    body.push('─────────────────────────────');
+    body.push('CLIENT 1');
+    body.push('─────────────────────────────');
+
+    // Walk through Section 1 grid rows
+    var rows = document.querySelectorAll('.section-block .client-grid .row-label');
+    rows.forEach(function(label) {
+      var cells = [];
+      var next = label.nextElementSibling;
+      while (next && !next.classList.contains('row-label')) {
+        var inp = next.querySelector('input, select, textarea');
+        if (inp) cells.push(inp.value || '—');
+        next = next.nextElementSibling;
+      }
+      var lbl = label.textContent.trim();
+      if (lbl && cells.length) {
+        body.push(lbl + ': ' + cells.join(' | '));
+      }
+    });
+
+    body.push('');
+    body.push('─────────────────────────────');
+    body.push('FINANCIAL SNAPSHOT');
+    body.push('─────────────────────────────');
+
+    var kpis = [
+      {id:'kpi-income-val',    label:'Total Income (pa)'},
+      {id:'kpi-expenses-val',  label:'Total Expenses (mo)'},
+      {id:'kpi-cashflow-val',  label:'Monthly Surplus/Deficit'},
+      {id:'kpi-assets-val',    label:'Total Assets'},
+      {id:'kpi-liabilities-val',label:'Total Liabilities'},
+      {id:'kpi-networth-val',  label:'Net Worth'},
+    ];
+    kpis.forEach(function(k) {
+      var el = document.getElementById(k.id);
+      if (el) body.push(k.label + ': ' + (el.textContent || '—'));
+    });
+
+    body.push('');
+    body.push('─────────────────────────────');
+    body.push('NOTE: This is a summary. The full completed form should be attached as a PDF.');
+    body.push('To save as PDF: open the form and click "Save as PDF" before sending.');
+    body.push('─────────────────────────────');
+    body.push('');
+    body.push('Kind regards,');
+    body.push(clientName);
+
+    var mailto = 'mailto:info@nationalservicefinancial.com.au'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body='    + encodeURIComponent(body.join('\n'));
+
+    // Generate PDF first, then open mail client
+    generatePDF(function(fname) {
+      setTimeout(function() {
+        window.location.href = mailto;
+        showToast(
+          'Email Ready',
+          'PDF saved as "' + fname + '" in your Downloads folder. Attach it to the email that just opened in your mail client.'
+        );
+      }, 500);
+    });
+  };
+
+
+  // ─── PRE-FILL DEMO DATA ─────────────────────────────────────────────────────
+  function prefillDemoData() {
+
+    // Safe helpers ─────────────────────────────────────────────────────────
+    function setVal(el, val) {
+      if (!el) return;
+      el.value = val;
+      el.dispatchEvent(new Event('input',  {bubbles:true}));
+      el.dispatchEvent(new Event('change', {bubbles:true}));
+    }
+
+    function byId(id) { return document.getElementById(id); }
+
+    function byPlaceholder(ph) {
+      return document.querySelector('input[placeholder="' + ph + '"], textarea[placeholder="' + ph + '"]');
+    }
+
+    function allByPlaceholder(ph) {
+      return document.querySelectorAll('input[placeholder="' + ph + '"], textarea[placeholder="' + ph + '"]');
+    }
+
+    function selectByText(el, txt) {
+      if (!el || !el.options) return;
+      for (var i = 0; i < el.options.length; i++) {
+        if (el.options[i].text.trim() === txt) {
+          el.selectedIndex = i;
+          el.dispatchEvent(new Event('change', {bubbles:true}));
+          return;
+        }
+      }
+    }
+
+    function selectById(id, txt) { selectByText(byId(id), txt); }
+
+    function ownerClick(groupIdx, label) {
+      var groups = document.querySelectorAll('.owner-select');
+      if (!groups[groupIdx]) return;
+      groups[groupIdx].querySelectorAll('.owner-btn').forEach(function(b) {
+        if (b.textContent.trim() === label) b.click();
+      });
+    }
+
+    // Get rows inside a section by section comment/title
+    function getSectionInputs(sectionNum) {
+      var blocks = document.querySelectorAll('.section-block');
+      if (!blocks[sectionNum]) return [];
+      return Array.from(blocks[sectionNum].querySelectorAll('input:not([readonly]), select, textarea'));
+    }
+
+    // Get all client-grid rows for a specific label text
+    function gridRow(labelText) {
+      var labels = document.querySelectorAll('.row-label');
+      for (var i = 0; i < labels.length; i++) {
+        if (labels[i].textContent.trim().indexOf(labelText) >= 0) {
+          var inputs = [];
+          var sib = labels[i].nextElementSibling;
+          while (sib && !sib.classList.contains('row-label') && !sib.classList.contains('row-cat')) {
+            var inp = sib.querySelector('input:not([readonly]), select, textarea');
+            if (inp) inputs.push(inp);
+            sib = sib.nextElementSibling;
+          }
+          return inputs;
+        }
+      }
+      return [];
+    }
+
+    // ── HERO META ──────────────────────────────────────────────────────────
+    setVal(byId('dateCompleted'), '2026-03-18');
+    selectById('referralSource', 'ADF Word of Mouth');
+    setVal(byId('referredBy'), 'CPL Dean Harrington (brother)');
+
+    // ── SECTION 1 — PERSONAL ───────────────────────────────────────────────
+    var surnames   = allByPlaceholder('Family name');
+    var firstnames = allByPlaceholder('Given names');
+    var preferred  = allByPlaceholder("As you'd like to be addressed");
+    var dva        = allByPlaceholder('e.g. DVA12345 or PMK-XXXXXX');
+    var mobiles    = allByPlaceholder('04XX XXX XXX');
+    var emails     = allByPlaceholder('email@example.com');
+
+    if (surnames[0])   setVal(surnames[0],   'Harrington');
+    if (surnames[1])   setVal(surnames[1],   'Harrington');
+    if (firstnames[0]) setVal(firstnames[0], 'Matthew James');
+    if (firstnames[1]) setVal(firstnames[1], 'Rebecca Anne');
+    if (preferred[0])  setVal(preferred[0],  'Matt');
+    if (preferred[1])  setVal(preferred[1],  'Bec');
+    if (dva[0])        setVal(dva[0],         'PMK-2847391');
+    if (mobiles[0])    setVal(mobiles[0],     '0447 382 915');
+    if (mobiles[1])    setVal(mobiles[1],     '0421 764 330');
+    if (emails[0])     setVal(emails[0],      'matt.harrington@adf.gov.au');
+    if (emails[1])     setVal(emails[1],      'bec.harrington@gmail.com');
+
+    var addrEl = byPlaceholder('Street, Suburb, State, Postcode');
+    if (addrEl) setVal(addrEl, '14 Anzac Avenue, Townsville QLD 4810');
+
+    var dobEls = document.querySelectorAll('input[type="date"]:not(#dateCompleted)');
+    if (dobEls[0]) setVal(dobEls[0], '1984-06-15');
+    if (dobEls[1]) setVal(dobEls[1], '1986-09-22');
+
+    var housingRows = gridRow('Housing Status');
+    if (housingRows[0]) selectByText(housingRows[0], 'Own — with mortgage');
+    if (housingRows[1]) selectByText(housingRows[1], 'Own — with mortgage');
+
+    var depRow = gridRow('Number of Dependants');
+    if (depRow[0]) selectByText(depRow[0], '2');
+    var depAges = byPlaceholder('Ages / DOB of dependants');
+    if (depAges) setVal(depAges, 'Lachlan (11), Ella (8)');
+
+    var empRow = gridRow('Employment Status');
+    if (empRow[0]) selectByText(empRow[0], 'Full Time — ADF Serving');
+    if (empRow[1]) selectByText(empRow[1], 'Part Time');
+
+    var empNameEls = allByPlaceholder('Company or ADF unit name');
+    if (empNameEls[0]) setVal(empNameEls[0], 'Australian Army — 3 Brigade');
+    if (empNameEls[1]) setVal(empNameEls[1], 'Townsville University Hospital');
+
+    var occEls = allByPlaceholder('e.g. Corporal, Project Manager');
+    if (occEls[0]) setVal(occEls[0], 'Sergeant (E7) — Infantry');
+    if (occEls[1]) setVal(occEls[1], 'Registered Nurse — Part Time');
+
+    var timeEls = allByPlaceholder('e.g. 3 years 2 months');
+    if (timeEls[0]) setVal(timeEls[0], '14 years 4 months');
+    if (timeEls[1]) setVal(timeEls[1], '6 years 1 month');
+
+    var helpEl  = document.querySelector('textarea[placeholder*="Briefly describe"]');
+    var goalsEl = document.querySelector('textarea[placeholder*="Protect my family"]');
+    if (helpEl)  setVal(helpEl,  'Planning for potential transition from ADF within the next 2-3 years. Want to ensure we have a solid financial plan before making any decisions. Concerned about income replacement and super options post-discharge.');
+    if (goalsEl) setVal(goalsEl, 'Reduce mortgage faster, grow super balance, ensure life and income protection is adequate for a family of four, build an investment portfolio, and plan a tax-efficient transition if Matt leaves the ADF.');
+
+    // ── SECTION 2 — INCOME ─────────────────────────────────────────────────
+    var incRows = document.querySelectorAll('.section-block:nth-child(2) .client-grid .row-cell');
+    // Gross salary row inputs
+    var salRow = gridRow('Gross Salary');
+    if (salRow[0]) setVal(salRow[0], '91500');
+    if (salRow[1]) setVal(salRow[1], '42000');
+
+    // ── SECTION 3 — EXPENSES ───────────────────────────────────────────────
+    var expFreqEl = byId('expFreq');
+    if (expFreqEl) { expFreqEl.value = 'monthly'; expFreqEl.dispatchEvent(new Event('change',{bubbles:true})); }
+
+    var expInputs = document.querySelectorAll('.exp-input');
+    // 14 rows x 3 cols = 42 inputs (C1, C2, Joint)
+    var expData = [
+      1800, 0, 0,    // household
+      2200, 0, 0,    // mortgage
+      0, 0, 0,       // rent
+      0, 0, 0,       // childcare
+      420, 0, 0,     // education
+      285, 0, 0,     // personal insurance
+      380, 0, 0,     // general insurance
+      0, 320, 0,     // medical
+      0, 0, 480,     // entertainment
+      0, 0, 280,     // clothing
+      0, 0, 0,       // personal loans
+      180, 0, 0,     // credit cards
+      0, 0, 95,      // other
+    ];
+    expData.forEach(function(v, i) {
+      if (expInputs[i]) setVal(expInputs[i], v > 0 ? v : '');
+    });
+
+    // Other description
+    var otherDesc = document.querySelector('.exp-input').closest('table').querySelector('input[placeholder="Description"]');
+    if (otherDesc) setVal(otherDesc, 'Streaming & subscriptions');
+
+    // ── SECTION 4 — ASSETS ─────────────────────────────────────────────────
+    var addrEls   = allByPlaceholder('Address');
+    var typeSelects = document.querySelectorAll('.data-table select');
+
+    // Property 1
+    if (addrEls[0]) setVal(addrEls[0], '14 Anzac Avenue, Townsville QLD 4810');
+    if (typeSelects[0]) selectByText(typeSelects[0], 'Owner Occupied');
+    var assetVals = document.querySelectorAll('[data-track="asset"]');
+    if (assetVals[0]) setVal(assetVals[0], '625000');
+    ownerClick(0, 'Joint');
+
+    // Savings account
+    var bankDescs = allByPlaceholder('Bank & account description');
+    if (bankDescs[0]) setVal(bankDescs[0], 'Commonwealth Bank — Everyday Account');
+    if (assetVals[3]) setVal(assetVals[3], '34500');
+    ownerClick(3, 'Joint');
+
+    // Offset
+    if (bankDescs[1]) setVal(bankDescs[1], 'Commonwealth Bank — Offset linked to home loan');
+    if (assetVals[4]) setVal(assetVals[4], '18200');
+    ownerClick(4, 'Joint');
+
+    // Home contents
+    var contentsEl = byPlaceholder('Estimated replacement value');
+    if (contentsEl) setVal(contentsEl, 'Estimated replacement value');
+    if (assetVals[5]) setVal(assetVals[5], '42000');
+    ownerClick(5, 'Joint');
+
+    // Vehicles
+    var vehEls = allByPlaceholder('Make, Model, Year');
+    if (vehEls[0]) setVal(vehEls[0], '2022 Toyota HiLux SR5 4WD');
+    if (assetVals[6]) setVal(assetVals[6], '52000');
+    ownerClick(6, 'C1');
+
+    if (vehEls[1]) setVal(vehEls[1], '2019 Honda CR-V VTi-S');
+    if (assetVals[7]) setVal(assetVals[7], '22500');
+    ownerClick(7, 'C2');
+
+    // Super 1
+    var superSelects = document.querySelectorAll('.data-table select');
+    // Find super fund selects by their options
+    var fundSelects = Array.from(document.querySelectorAll('select')).filter(function(s) {
+      return s.options.length > 3 && s.options[1] && s.options[1].text.indexOf('ADF Super') >= 0;
+    });
+    if (fundSelects[0]) selectByText(fundSelects[0], 'ADF Super');
+    var memberEls = allByPlaceholder('Member number (optional)');
+    if (memberEls[0]) setVal(memberEls[0], 'MBR-48291746');
+    if (assetVals[9]) setVal(assetVals[9], '142000');
+    ownerClick(9, 'C1');
+
+    // Super 2
+    if (fundSelects[1]) selectByText(fundSelects[1], 'Australian Retirement Trust');
+    if (memberEls[1]) setVal(memberEls[1], 'ART-7823940');
+    if (assetVals[10]) setVal(assetVals[10], '38500');
+    ownerClick(10, 'C2');
+
+    // Shares
+    var brokerEls = allByPlaceholder('Broker / Platform and description');
+    if (brokerEls[0]) setVal(brokerEls[0], 'CommSec — ASX ETFs (VAS, VGS)');
+    if (assetVals[11]) setVal(assetVals[11], '18500');
+    ownerClick(11, 'Joint');
+
+    // DVA lump sum status
+    var dvaStatusSels = Array.from(document.querySelectorAll('select')).filter(function(s) {
+      return Array.from(s.options).some(function(o){ return o.text.indexOf('Not Applicable') >= 0 && o.text.indexOf('Accepted') >= 0; });
+    });
+    if (dvaStatusSels[0]) selectByText(dvaStatusSels[0], 'Not Applicable');
+
+    // ── SECTION 5 — LIABILITIES ────────────────────────────────────────────
+    // Home loan health check
+    var hlCheck = Array.from(document.querySelectorAll('select')).filter(function(s){
+      return Array.from(s.options).some(function(o){ return o.text === 'Yes please'; });
+    });
+    if (hlCheck[0]) selectByText(hlCheck[0], 'Yes please');
+
+    // Home Loan 1
+    var lenderEls = allByPlaceholder('Lender name');
+    if (lenderEls[0]) setVal(lenderEls[0], 'Commonwealth Bank of Australia');
+    var liabVals = document.querySelectorAll('[data-track="liability"]');
+    // Monthly repayments are NOT data-track=liability, so find them by placeholder
+    var repayEls = allByPlaceholder('0');
+    // Home loan repayment/balance: target via liability rows specifically
+    var hlRows = document.querySelectorAll('.data-table tbody tr');
+    var hlIdx = 0;
+    hlRows.forEach(function(row) {
+      var firstTd = row.querySelector('td:first-child');
+      if (!firstTd) return;
+      var txt = firstTd.textContent.trim();
+      if (txt === 'Home Loan 1') {
+        var nums = row.querySelectorAll('input[type="number"]');
+        if (nums[0]) setVal(nums[0], '2200');   // repayment
+        if (nums[1]) setVal(nums[1], '398000'); // balance
+        var sels = row.querySelectorAll('select');
+        if (sels[0]) selectByText(sels[0], 'Principal & Interest');
+        if (sels[1]) selectByText(sels[1], 'Variable');
+        var rateEl = row.querySelector('input[placeholder="Interest rate %"]');
+        if (rateEl) setVal(rateEl, '6.24');
+        ownerClick(14, 'Joint');
+      }
+      if (txt === 'Vehicle Loan') {
+        var lenderVeh = row.querySelector('input[placeholder="Lender name"]');
+        if (lenderVeh) setVal(lenderVeh, 'Toyota Finance Australia');
+        var nums = row.querySelectorAll('input[type="number"]');
+        if (nums[0]) setVal(nums[0], '420');
+        if (nums[1]) setVal(nums[1], '18500');
+        var rateEl = row.querySelector('input[placeholder="Rate %"]');
+        if (rateEl) setVal(rateEl, '7.49');
+        ownerClick(17, 'C1');
+      }
+      if (txt === 'Credit Card 1') {
+        var nums = row.querySelectorAll('input[type="number"]');
+        var bankEl = row.querySelector('input[placeholder="Bank / Card name"]');
+        if (bankEl) setVal(bankEl, 'ANZ Platinum');
+        if (nums[0]) setVal(nums[0], '180');   // min repayment
+        if (nums[1]) setVal(nums[1], '3200');  // balance
+        if (nums[2]) setVal(nums[2], '8500');  // limit
+        var rateEl = row.querySelector('input[placeholder="Rate %"]');
+        if (rateEl) setVal(rateEl, '20.99');
+        ownerClick(19, 'C1');
+      }
+      if (txt === 'Afterpay / Zip Pay') {
+        var provEl = row.querySelector('input[placeholder="Provider"]');
+        if (provEl) setVal(provEl, 'Afterpay');
+        var nums = row.querySelectorAll('input[type="number"]');
+        if (nums[0]) setVal(nums[0], '80');
+        if (nums[1]) setVal(nums[1], '480');
+        ownerClick(22, 'Joint');
+      }
+    });
+
+    // Liability notes
+    var liabNotes = document.querySelector('textarea[placeholder*="additional notes about debts"]');
+    if (liabNotes) setVal(liabNotes, 'Home loan with CBA on standard variable rate. Offset account $18,200 reducing effective interest. Matt eligible for DHOAS subsidy (~$320/mo) — currently receiving. Vehicle loan 3 years remaining. Recommend home loan health check and offset vs redraw strategy review.');
+
+    // ── SECTION 6 — ADVISER NOTES ──────────────────────────────────────────
+    var meetNotes = document.querySelector('textarea[placeholder*="Key discussion points"]');
+    if (meetNotes) setVal(meetNotes, 'Initial consultation 18/03/2026. Matt considering voluntary discharge in 2-3 years to pursue civilian career in logistics management. Bec supportive but concerned about income drop during transition. Two school-age children. Matt has 14+ years service — eligible for significant super benefits. Couple keen to understand all options before committing.');
+
+    var dvaNotesEl = document.querySelector('textarea[placeholder*="DVA claim numbers"]');
+    if (dvaNotesEl) setVal(dvaNotesEl, 'No current DVA claims. Matt has reported mild hearing loss — adviser to discuss whether MRCA claim may be appropriate. Refer to NSF DVA Advocate for initial assessment. No Gold or White Card at this stage.');
+
+    var actionEl = document.querySelector('textarea[placeholder*="Obtain superannuation"]');
+    if (actionEl) setVal(actionEl, '1. Obtain ADF Super and ART statements\n2. Calculate DHOAS entitlement and optimise offset/redraw\n3. Model ADF super scenarios on discharge\n4. Review life and income protection insurance adequacy\n5. Discuss voluntary discharge timing and financial impact\n6. Refer to DVA Advocate re: hearing loss assessment\n7. Review CBA home loan — potential $180/mo saving\n8. Discuss ETF portfolio growth strategy');
+
+    var riskSels = Array.from(document.querySelectorAll('select')).filter(function(s){
+      return Array.from(s.options).some(function(o){ return o.text.indexOf('Moderately Conservative') >= 0; });
+    });
+    if (riskSels[0]) selectByText(riskSels[0], 'Moderately Conservative');
+
+    var refSels = Array.from(document.querySelectorAll('select')).filter(function(s){
+      return Array.from(s.options).some(function(o){ return o.text.indexOf('ESO') >= 0; });
+    });
+    if (refSels[0]) selectByText(refSels[0], 'ADF Word of Mouth');
+
+    // ── TRIGGER RECALCULATIONS ─────────────────────────────────────────────
+    calcExpTotals();
+    updateProgress();
+    updateDashboard();
+    updateValidUntil();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var today = new Date().toISOString().split('T')[0];
+    var dateFld = document.getElementById('dateCompleted');
+    if (dateFld) dateFld.value = today;
+    updateValidUntil();
+
+    // Attach expense listeners
+    document.querySelectorAll('.exp-input').forEach(function(inp) {
+      inp.addEventListener('input', calcExpTotals);
+    });
+
+    // Attach progress + dashboard listeners to all inputs
+    document.querySelectorAll('input, select, textarea').forEach(function(el) {
+      el.addEventListener('input', function() {
+        updateProgress();
+        updateDashboard();
+      });
+      el.addEventListener('change', function() {
+        updateProgress();
+        updateDashboard();
+      });
+    });
+
+    updateProgress();
+    updateDashboard();
+    prefillDemoData();
+  });
+
+})();
+</script>
+
+</div><!-- /pdfContent -->
+<!-- ─── TOAST ─── -->
+<div class="nsf-toast" id="nsfToast">
+  <div class="nsf-toast-icon">✓</div>
+  <div class="nsf-toast-text">
+    <strong id="nsfToastTitle">PDF Generated</strong>
+    <span id="nsfToastMsg">Your PDF has been saved to Downloads. Attach it to the email that just opened.</span>
+  </div>
+  <button class="nsf-toast-close" onclick="hideToast()">✕</button>
+</div>
+<div class="nsf-overlay" id="nsfOverlay">
+  <div class="nsf-spinner">
+    <div class="nsf-spinner-ring"></div>
+    <div class="nsf-spinner-text">Preparing PDF…</div>
+  </div>
+</div>
+</body>
+</html>
